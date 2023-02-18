@@ -1,1 +1,1 @@
-# microservice-blog
+# Common repository for Blog
