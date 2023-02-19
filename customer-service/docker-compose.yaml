@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  fpm:
+    build: docker/php
+    container_name: fpm.customer
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+    networks:
+      - customer_network
+
+  api:
+    build: docker/nginx
+    container_name: api.customer
+    depends_on:
+      - fpm
+    ports:
+      - "8001:80"
+    volumes:
+      - ./:/app
+      - ./docker/nginx/vhosts/rest.conf:/etc/nginx/sites-enabled/default
+    networks:
+      - customer_network
+
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: db.customer
+    ports:
+      - "5434:5432"
+    networks:
+      - customer_network
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+      POSTGRES_DB: blog_customer
+
+networks:
+  customer_network:
+    driver: bridge
+    external: false
+
