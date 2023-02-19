@@ -1,3 +1,10 @@
 # Content Service for Blog
 
-Posts, comments, likes, photo, video, text and etc. (RESTfull API)
+Symfony Framework
+
+# Ports
+1. API HTTP :8000
+2. PostgreSQL :5433
+3. Elasticsearch :9200
+
+Docker network: content_network

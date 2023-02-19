@@ -1,3 +1,9 @@
-# Customer Service for Blog
+# Customer Service Blog
 
-Service provides an information about users(clients), namely, roles, users, maybe tokens, messages, subscriptions (RESTfull API)
+Laravel Framework
+
+# Ports
+1. API HTTP :8001
+2. PostgreSQL :5434
+
+Docker network: customer_network
