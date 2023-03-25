@@ -8,5 +8,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+    /** @var string  */
+    protected const SERVER_ERROR_MESSAGE = "Oops, something went wrong. Try later.";
+
     use AuthorizesRequests, ValidatesRequests;
 }
