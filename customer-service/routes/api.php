@@ -14,12 +14,10 @@ use App\Http\Controllers\AuthenticationController;
 |
 */
 
-Route::prefix('v1')->name('version-1')->group(function () {
-
-    Route::name("no-auth")->group(function () {
-        Route::post('/signup', [AuthenticationController::class, 'signUp']);
+Route::prefix('v1')->name('version-1.')->group(function () {
+    Route::name("no-auth.")->group(function () {
+        Route::post('/signup', [AuthenticationController::class, 'signUp'])->name('customer_signup');
     });
-
 });
 
 

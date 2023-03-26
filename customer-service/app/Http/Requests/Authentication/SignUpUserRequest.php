@@ -23,8 +23,11 @@ class SignUpUserRequest extends BaseRequestApi
     public function rules(): array
     {
         return [
-            'email' => "string|unique:users|required|email|lowercase",
-            'password' => "string|min:8|max:32|confirmed|required"
+            'name'     => "required|string|min:2|max:50",
+            'lastName' => "required|string|min:2|max:50",
+            'email'    => "string|unique:users|required|email",
+            'password' => "string|min:8|max:32|confirmed|required",
+            'login'    => "string|unique:users|min:4|max:16"
         ];
     }
 }

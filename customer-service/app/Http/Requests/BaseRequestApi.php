@@ -23,7 +23,7 @@ abstract class BaseRequestApi extends FormRequest
     {
         $errors = (new ValidationException($validator))->errors();
 
-        throw new HttpResponseException(
+        throw new HttpResponseException( //@todo I need think about how it logging
             new JsonResponse($errors, 400)
         );
     }
