@@ -52,30 +52,42 @@ return [
 
     'channels' => [
         'stack' => [
-            'driver' => 'stack',
-            'channels' => ['single'],
+            'driver'            => 'stack',
+            'channels'          => ['error_single', 'info_single', 'debug_single'],
             'ignore_exceptions' => false,
         ],
 
-        'single' => [
+        'error_single' => [
             'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
+            'path'   => storage_path('logs/laravel_errors.log'),
+            'level'  => 'error'
+        ],
+
+        'info_single' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/laravel_info.log'),
+            'level'  => 'info'
+        ],
+
+        'debug_single' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/laravel_debug.log'),
+            'level'  => 'debug'
         ],
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'days' => 14,
+            'path'   => storage_path('logs/laravel.log'),
+            'level'  => env('LOG_LEVEL', 'debug'),
+            'days'   => 14,
         ],
 
         'slack' => [
-            'driver' => 'slack',
-            'url' => env('LOG_SLACK_WEBHOOK_URL'),
+            'driver'   => 'slack',
+            'url'      => env('LOG_SLACK_WEBHOOK_URL'),
             'username' => 'Laravel Log',
-            'emoji' => ':boom:',
-            'level' => env('LOG_LEVEL', 'critical'),
+            'emoji'    => ':boom:',
+            'level'    => env('LOG_LEVEL', 'critical'),
         ],
 
         'papertrail' => [

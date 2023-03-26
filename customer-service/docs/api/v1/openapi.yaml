@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: Customer service API methods
+  description: Authentication and authorization.
+      <br> Developed at Framework Laravel
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8001'
+paths:
+  /api/v1/signip:
+    post:
+      tags:
+        - Authentication
+      summary: Simple register a customer via Email
+      description: No description
+      requestBody:
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+              required:
+                - name
+                - lastName
+                - email
+                - password
+                - password_confirmation
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Customer name. <br>Min 2 and max 50 characters
+                  example: "Mikhail"
+                lastName:
+                  type: string
+                  description: Customer last name. <br>Min 2 and max 50 characters
+                email:
+                  type: string
+                  description: Customer Email. <br>It must be unique
+                password:
+                  type: string
+                  description: Customer password. <br>Min 8 and max 32 characters
+                password_confirmation:
+                  type: string
+                  description: Repeat customer password
+                login:
+                  type: string
+                  description: Customer login. 
+                      <br>No required
+                      <br>It must be unique
+                      <br>Min 4 and max 16 characters
+      responses:
+        201:
+          description: Success creating customer
+          content:
+            application/json:
+              example:
+                "payload": {
+                  "id": "d8f169b7-0d0f-4b8c-8315-38b58dcdf83c",
+                  "login": "selyatin83",
+                  "email": "selyatin83@mail.ru",
+                  "name": "Михаил",
+                  "last_name": "Селятин",
+                  "updated_at": "2023-03-26T10:32:32.000000Z",
+                  "created_at": "2023-03-26T10:32:32.000000Z"
+                }
+                "error": {
+                  "data": null,
+                  "message": null
+                }
+        400:
+          description: Failed validation request
+          content:
+            application/json:
+              example:
+                "payload": null,
+                "error": {
+                  "data": {
+                    "name": [
+                      "The name field is required."
+                    ],
+                    "email": [
+                      "The email has already been taken."
+                    ],
+                    "login": [
+                      "The login has already been taken."
+                    ]
+                  },
+                  "message": null
+                }
+        500:
+          description: Unknown server error
+          content:
+            application/json:
+              example:
+                "payload": null,
+                "error": {
+                  "data": null,
+                  "message": "Oops, something went wrong. Try later."
+                }
+  
