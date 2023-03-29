@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'expiration' => null,
+    'expiration' => 1440, //@todo While 1 day, need 10-15 minutes and the refresh
 
     /*
     |--------------------------------------------------------------------------

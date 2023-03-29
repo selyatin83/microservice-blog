@@ -1,6 +1,7 @@
 <?php
 
-namespace App\ValueObjects;
+namespace App\ValueObjects\User;
+
 use App\Interfaces\ValueObjectInterface;
 use Webmozart\Assert\Assert;
 

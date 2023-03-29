@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\ValueObjects\Email;
-use App\ValueObjects\Id;
-use App\ValueObjects\Password;
+use App\ValueObjects\User\Email;
+use App\ValueObjects\User\Id;
+use App\ValueObjects\User\Password;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;

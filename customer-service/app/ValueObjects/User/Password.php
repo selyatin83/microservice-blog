@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ValueObjects;
+namespace App\ValueObjects\User;
 
 use App\Interfaces\ValueObjectInterface;
 use Illuminate\Support\Facades\Hash;
