@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\Http\Controllers\Controller;
+use App\Http\Responses\JsonResponse;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
+use Error;
+use ErrorException;
 
 class Handler extends ExceptionHandler
 {
@@ -41,8 +44,14 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->reportable(function (Error $e) {
+            return new JsonResponse(
+                new ErrorException(
+                    Controller::SERVER_ERROR_MESSAGE,
+                    $e->getCode()
+                ),
+                500
+            );
         });
     }
 }

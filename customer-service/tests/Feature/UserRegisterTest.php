@@ -25,7 +25,7 @@ class UserRegisterTest extends TestCase
     /**
      * @return void
      */
-    public function test_signup_customer_route_is_not_404(): void
+    public function test_signup_customer_route_http_is_available(): void
     {
         $route = route('version-1.no-auth.customer_signup');
 
@@ -36,6 +36,8 @@ class UserRegisterTest extends TestCase
 
         $statusCode = $response->getStatusCode();
         $this->assertNotEquals(Response::HTTP_NOT_FOUND, $statusCode);
+        $this->assertNotEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $statusCode);
+        $this->assertNotEquals(Response::HTTP_BAD_GATEWAY, $statusCode);
     }
 
     /**
@@ -67,10 +69,12 @@ class UserRegisterTest extends TestCase
             ->assertStatus(Response::HTTP_CREATED)
             ->assertJson([
                 'payload' => [
-                    'login' => $userTestLogin,
-                    'email' => $userTestEmail,
-                    'name' => $userTestName,
-                    'last_name' => $userTestLastName,
+                    'user' => [
+                        'login' => $userTestLogin,
+                        'email' => $userTestEmail,
+                        'name' => $userTestName,
+                        'last_name' => $userTestLastName,
+                    ]
                 ],
                 'error' => [
                     'data' => null,

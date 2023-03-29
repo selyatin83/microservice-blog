@@ -1,9 +1,10 @@
 <?php
 
-namespace App\ValueObjects;
+namespace App\ValueObjects\User;
+
+use App\Interfaces\ValueObjectInterface;
 use Ramsey\Uuid\Uuid;
 use Webmozart\Assert\Assert;
-use App\Interfaces\ValueObjectInterface;
 
 /**
  * @property string $id

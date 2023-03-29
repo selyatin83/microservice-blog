@@ -7,7 +7,7 @@ info:
 servers:
   - url: 'http://localhost:8001'
 paths:
-  /api/v1/signip:
+  /api/v1/signup:
     post:
       tags:
         - Authentication
@@ -54,13 +54,15 @@ paths:
             application/json:
               example:
                 "payload": {
-                  "id": "d8f169b7-0d0f-4b8c-8315-38b58dcdf83c",
-                  "login": "selyatin83",
-                  "email": "selyatin83@mail.ru",
-                  "name": "Михаил",
-                  "last_name": "Селятин",
-                  "updated_at": "2023-03-26T10:32:32.000000Z",
-                  "created_at": "2023-03-26T10:32:32.000000Z"
+                  "user": {
+                    "id": "3487bc1c-b17f-45fd-b4ee-822090eada42",
+                    "login": "selyatin83",
+                    "email": "selyatin83@mail.ru",
+                    "name": "Михаил",
+                    "last_name": "Селятин",
+                    "updated_at": "2023-03-29T03:19:29.000000Z",
+                    "created_at": "2023-03-29T03:19:29.000000Z"
+                  }
                 }
                 "error": {
                   "data": null,
@@ -82,6 +84,79 @@ paths:
                     ],
                     "login": [
                       "The login has already been taken."
+                    ]
+                  },
+                  "message": null
+                }
+        500:
+          description: Unknown server error
+          content:
+            application/json:
+              example:
+                "payload": null,
+                "error": {
+                  "data": null,
+                  "message": "Oops, something went wrong. Try later."
+                }
+
+  /api/v1/signin:
+    post:
+      tags:
+        - Authentication
+      summary: Simple login by email and password.
+      description: Will do login by login and password be support later.
+            <br> Time to life a token 1 day or 1440 minutes
+      requestBody:
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+              required:
+                - email
+                - password
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Customer Email.
+                password:
+                  type: string
+                  description: Customer password.
+      responses:
+        201:
+          description: Success login customer
+          content:
+            application/json:
+              example:
+                "payload": {
+                  "user": {
+                    "id": "3487bc1c-b17f-45fd-b4ee-822090eada42",
+                    "email": "selyatin83@mail.ru",
+                    "login": "selyatin83",
+                    "name": "Михаил",
+                    "last_name": "Селятин",
+                    "deleted_at": null,
+                    "created_at": "2023-03-29T03:19:29.000000Z",
+                    "updated_at": "2023-03-29T03:19:29.000000Z"
+                  },
+                  "token": {
+                    "value": "9|RYFreU4EN05m50kulg9zPtoEXfJC2XIbsrLl2CHZ",
+                    "expiresAt": "2023-03-29 03:53:30"
+                  }
+                }
+                "error": {
+                  "data": null,
+                  "message": null
+                }
+        400:
+          description: Failed validation request
+          content:
+            application/json:
+              example:
+                "payload": null,
+                "error": {
+                  "data": {
+                    "password": [
+                      "The password field is required."
                     ]
                   },
                   "message": null

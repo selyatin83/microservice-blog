@@ -3,9 +3,9 @@
 namespace Tests\Unit\Models;
 
 use App\Models\User;
-use App\ValueObjects\Email;
-use App\ValueObjects\Id;
-use App\ValueObjects\Password;
+use App\ValueObjects\User\Email;
+use App\ValueObjects\User\Id;
+use App\ValueObjects\User\Password;
 use Tests\TestCase;
 
 /**
@@ -32,7 +32,7 @@ class UserTest extends TestCase
      */
     public function test_that_can_set_to_field_email_value_object(): void
     {
-        $value = "testCorrect@gmail.com";
+        $value = "testcorrect@gmail.com";
         $emailVo = Email::create($value);
 
         $user = new User();

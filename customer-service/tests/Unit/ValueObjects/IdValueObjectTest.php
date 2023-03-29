@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\ValueObjects;
 
-use App\ValueObjects\Id;
+use App\ValueObjects\User\Id;
 use Tests\TestCase;
 
 /**

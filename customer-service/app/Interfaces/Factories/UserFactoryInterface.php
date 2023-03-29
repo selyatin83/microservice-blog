@@ -3,9 +3,9 @@
 namespace App\Interfaces\Factories;
 
 use App\Models\User;
-use App\ValueObjects\Email;
-use App\ValueObjects\Id;
-use App\ValueObjects\Password;
+use App\ValueObjects\User\Email;
+use App\ValueObjects\User\Id;
+use App\ValueObjects\User\Password;
 
 /**
  * @author <Mikhail Selyatin>

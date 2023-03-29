@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\ValueObjects;
 
-use App\ValueObjects\Email;
+use App\ValueObjects\User\Email;
 use Tests\TestCase;
 
 /**
@@ -15,7 +15,7 @@ class EmailValueObjectTest extends TestCase
      */
     public function test_success_creating_value_object(): void
     {
-        $value = "correctEmail@gmail.com";
+        $value = "correctemail@gmail.com";
         $emailVo = Email::create($value);
 
         $this->assertEquals($value, $emailVo->getValue());
